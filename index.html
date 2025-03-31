@@ -169,6 +169,22 @@ Builder.registerComponent(SynthesizersPage, {
 });
 
 export default SynthesizersPage;
+import { component$ } from "@builder.io/qwik";
+ import type { ValuePropositionProps } from "./types";
+ 
+ export const ValueProposition = component$<ValuePropositionProps>(
+   ({ title, description }) => {
+     return (
+       <section class="flex flex-col gap-5 mb-16">
+         <h2 class="text-5xl text-black max-sm:text-4xl">{title}</h2>
+         <p class="text-4xl max-w-[500px] text-zinc-600 max-md:text-3xl max-sm:text-2xl">
+           {description}
+         </p>
+       </section>
+     );
+   },
+ );
+   
 <nav>
     <ul>
         <li><a href="index.html">index</a></li>
