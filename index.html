@@ -1,238 +1,341 @@
-import { component$ } from "@builder.io/qwik";
-import { Builder } from "@builder.io/sdk-qwik";
-
-// Single consolidated component
-export const SynthesizersPage = component$(
-  ({
-    heroTitle = "SYNTHESIZERS",
-    heroDescription = "Premium fabrics for everything-curtains, shirts, and more. Style your spaces and wardrobe effortlessly",
-    heroBackgroundImage = "https://cdn.builder.io/api/v1/image/assets/TEMP/7262d557e89471340ebe23633eccc1bdab054a9a",
-    fabricImages = [
-      {
-        imageUrl:
-          "https://cdn.builder.io/api/v1/image/assets/TEMP/130061fc9de17a6f49e0374fdbfcb121b37928ba",
-        altText: "Fabric samples",
-      },
-      {
-        imageUrl:
-          "https://cdn.builder.io/api/v1/image/assets/TEMP/5b876ffbba3a21cdf297a725d14ee88d6f379265",
-        altText: "Fabric display",
-      },
-      {
-        imageUrl:
-          "https://cdn.builder.io/api/v1/image/assets/TEMP/e53ffc856ad41caccdc3dca82d8d94755eff9a96",
-        altText: "Fabric collection",
-      },
-    ],
-  }) => {
-    return (
-      <>
-        <link
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
-        <main class="mx-auto my-0 w-full bg-white max-w-[1440px] max-md:max-w-[991px] max-sm:max-w-screen-sm">
-          {/* Hero Section */}
-          <header
-            class="flex flex-col items-center px-20 py-14 text-white bg-center bg-cover h-[720px] max-md:p-10 max-md:h-auto max-sm:p-5"
-            style={{ backgroundImage: `url('${heroBackgroundImage}')` }}
-          >
-            <h1 class="mb-5 text-xl font-medium max-sm:text-lg">{heroTitle}</h1>
-            <p class="mb-5 text-base text-center max-w-[600px] max-sm:text-sm">
-              {heroDescription}
-            </p>
-            <button class="px-6 py-3.5 mb-5 text-base bg-black rounded-lg cursor-pointer max-sm:px-5 max-sm:py-2.5 max-sm:text-sm">
-              LOGIN
-            </button>
-            <nav class="flex gap-12 max-md:flex-col max-md:gap-5 max-md:items-center">
-              <a href="#contact" class="text-base cursor-pointer">
-                Contact
-              </a>
-              <a href="#help" class="text-base cursor-pointer">
-                Help
-              </a>
-              <a href="#settings" class="text-base cursor-pointer">
-                Settings
-              </a>
-            </nav>
-          </header>
-
-          <article class="px-20 py-10 max-md:p-5">
-            {/* Safety Section */}
-            <section class="flex flex-col gap-5 mb-16">
-              <h2 class="text-5xl text-black max-sm:text-4xl">SAFETY</h2>
-              <p class="text-4xl max-w-[500px] text-zinc-600 max-md:text-3xl max-sm:text-2xl">
-                We earn your trust through hard work, uphold it with dignity and
-                devotion, ensure safety, and offer all verified payment modes.
-              </p>
-            </section>
-
-            {/* Time Section */}
-            <section class="flex flex-col gap-5 mb-16">
-              <h2 class="text-5xl text-black max-sm:text-4xl">TIME</h2>
-              <p class="text-4xl max-w-[500px] text-zinc-600 max-md:text-3xl max-sm:text-2xl">
-                With all due we will get to you as soon as possible with all the
-                perfection you expect from us.
-              </p>
-            </section>
-
-            {/* People Section */}
-            <section class="flex flex-col gap-5 mb-16">
-              <h2 class="text-5xl text-black max-sm:text-4xl">PEOPLE</h2>
-              <p class="text-4xl max-w-[500px] text-zinc-600 max-md:text-3xl max-sm:text-2xl">
-                People of different races and countries come together to get
-                connected here
-              </p>
-            </section>
-
-            {/* Image Gallery */}
-            <section class="flex flex-wrap gap-10 justify-center">
-              {fabricImages.map((image, index) => (
-                <figure
-                  key={index}
-                  class="overflow-hidden relative rounded-[74px] max-sm:rounded-[40px]"
-                >
-                  <img
-                    src={image.imageUrl}
-                    alt={image.altText}
-                    class="relative w-full h-auto rounded-[58px] z-[2] max-sm:rounded-[30px]"
-                  />
-                </figure>
-              ))}
-            </section>
-          </article>
-        </main>
-      </>
-    );
-  },
-);
-
-// Register component with Builder.io
-Builder.registerComponent(SynthesizersPage, {
-  name: "Synthesizers Page",
-  inputs: [
-    {
-      name: "heroBackgroundImage",
-      type: "file",
-      defaultValue:
-        "https://cdn.builder.io/api/v1/image/assets/TEMP/7262d557e89471340ebe23633eccc1bdab054a9a",
-      friendlyName: "Hero Background Image",
-    },
-    {
-      name: "heroTitle",
-      type: "string",
-      defaultValue: "SYNTHESIZERS",
-      friendlyName: "Hero Title",
-    },
-    {
-      name: "heroDescription",
-      type: "string",
-      defaultValue:
-        "Premium fabrics for everything-curtains, shirts, and more. Style your spaces and wardrobe effortlessly",
-      friendlyName: "Hero Description",
-    },
-    {
-      name: "fabricImages",
-      type: "list",
-      defaultValue: [
-        {
-          imageUrl:
-            "https://cdn.builder.io/api/v1/image/assets/TEMP/130061fc9de17a6f49e0374fdbfcb121b37928ba",
-          altText: "Fabric samples",
-        },
-        {
-          imageUrl:
-            "https://cdn.builder.io/api/v1/image/assets/TEMP/5b876ffbba3a21cdf297a725d14ee88d6f379265",
-          altText: "Fabric display",
-        },
-        {
-          imageUrl:
-            "https://cdn.builder.io/api/v1/image/assets/TEMP/e53ffc856ad41caccdc3dca82d8d94755eff9a96",
-          altText: "Fabric collection",
-        },
-      ],
-      subFields: [
-        {
-          name: "imageUrl",
-          type: "file",
-          friendlyName: "Image",
-        },
-        {
-          name: "altText",
-          type: "string",
-          friendlyName: "Alt Text",
-        },
-      ],
-      friendlyName: "Fabric Images",
-    },
-  ],
-});
-
-export default SynthesizersPage;
-import { component$ } from "@builder.io/qwik";
- import type { ValuePropositionProps } from "./types";
- 
- export const ValueProposition = component$<ValuePropositionProps>(
-   ({ title, description }) => {
-     return (
-       <section class="flex flex-col gap-5 mb-16">
-         <h2 class="text-5xl text-black max-sm:text-4xl">{title}</h2>
-         <p class="text-4xl max-w-[500px] text-zinc-600 max-md:text-3xl max-sm:text-2xl">
-           {description}
-         </p>
-       </section>
-     );
-   },
- );
- import { component$ } from "@builder.io/qwik";
-import type { ImageGalleryProps } from "./types";
-
-export const ImageGallery = component$<ImageGalleryProps>(({ images }) => {
-  return (
-    <section class="flex flex-wrap gap-10 justify-center">
-      {images.map((image, index) => (
-        <figure
-          key={index}
-          class="overflow-hidden relative rounded-[74px] max-sm:rounded-[40px]"
-        >
-          <img
-            src={image.imageUrl}
-            alt={image.altText}
-            class="relative w-full h-auto rounded-[58px] z-[2] max-sm:rounded-[30px]"
-          />
-        </figure>
-      ))}
-    </section>
-  );
-});
-  template>
-  <header
-    class="flex flex-col items-center px-20 py-14 text-white bg-center bg-cover bg-[url('https://cdn.builder.io/api/v1/image/assets/TEMP/7262d557e89471340ebe23633eccc1bdab054a9a')] h-[720px] max-md:p-10 max-md:h-auto max-sm:p-5"
-  >
-    <h1 class="mb-5 text-xl font-medium max-sm:text-lg">SYNTHESIZERS</h1>
-    <p class="mb-5 text-base text-center max-w-[600px] max-sm:text-sm">
-      Premium fabrics for everything-curtains, shirts, and more. Style your
-      spaces and wardrobe effortlessly
-    </p>
-    <button
-      class="px-6 py-3.5 mb-5 text-base bg-black rounded-lg cursor-pointer max-sm:px-5 max-sm:py-2.5 max-sm:text-sm"
+template>
+  <div>
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&family=Instrument+Serif&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Header Section -->
+    <header
+      class="fixed inset-x-0 top-0 bg-white h-[164px] shadow-[0px_4px_6px_rgba(0,0,0,0.25)] z-[100]"
     >
-      LOGIN
-    </button>
-    <nav class="flex gap-12 max-md:flex-col max-md:gap-5 max-md:items-center">
-      <a href="#contact" class="text-base cursor-pointer">Contact</a>
-      <a href="#help" class="text-base cursor-pointer">Help</a>
-      <a href="#settings" class="text-base cursor-pointer">Settings</a>
-    </nav>
-  </header>
+      <nav
+        class="flex justify-between items-center px-20 py-14 mx-auto my-0 max-w-[1440px] max-md:px-10 max-md:py-14 max-sm:px-5 max-sm:py-14"
+      >
+        <h1 class="text-xl text-black">SYNTHESIZER .CO</h1>
+        <div class="flex gap-12 items-center max-sm:hidden">
+          <a href="#footwear" class="text-2xl text-black">Footwear</a>
+          <a href="#textiles" class="text-2xl text-black">Home Textiles</a>
+          <a href="#clothing" class="text-2xl text-black">Clothing</a>
+          <button
+            class="px-6 py-3.5 text-base font-medium text-white bg-black rounded-lg"
+          >
+            SEARCH
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section
+        class="px-16 pt-64 pb-0 max-md:px-10 max-md:pt-64 max-md:pb-0 max-sm:px-5 max-sm:pt-64 max-sm:pb-0"
+      >
+        <div class="max-w-[736px]">
+          <h2 class="mb-6 text-7xl tracking-tighter text-black max-sm:text-5xl">
+            DISCOVER THE POWER OF FIBRE
+          </h2>
+          <p class="mb-10 text-4xl text-black leading-[54px] max-sm:text-2xl">
+            Uncover a diverse collection of products crafted with innovative
+            fiber technologies, spanning apparel, footwear, home goods, and
+            more.
+          </p>
+          <div class="flex gap-4">
+            <button
+              class="px-8 py-5 text-4xl text-white bg-black rounded-[38px] max-sm:text-2xl"
+            >
+              Explore Our Collection
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Product Showcase Section -->
+      <section
+        class="px-16 py-20 max-md:px-10 max-md:py-20 max-sm:px-5 max-sm:py-20"
+      >
+        <h2 class="mb-10 text-6xl text-black max-sm:text-4xl">
+          WHAT WILL YOU DISCOVER IN FIBRE?
+        </h2>
+        <div class="flex gap-11 max-md:flex-col">
+          <!-- Product Card 1 -->
+          <article class="flex-1">
+            <img
+              :src="productCards[0].imageUrl"
+              :alt="productCards[0].imageAlt"
+              class="object-cover w-full rounded-3xl h-[465px]"
+            />
+            <div class="mt-7">
+              <h3 class="mb-7 text-2xl text-black">
+                {{ productCards[0].title }}
+              </h3>
+              <p class="text-2xl text-zinc-500">
+                {{ productCards[0].description }}
+              </p>
+            </div>
+          </article>
+
+          <!-- Product Card 2 -->
+          <article class="flex-1">
+            <img
+              :src="productCards[1].imageUrl"
+              :alt="productCards[1].imageAlt"
+              class="object-cover w-full rounded-3xl h-[465px]"
+            />
+            <div class="mt-7">
+              <h3 class="mb-7 text-2xl text-black">
+                {{ productCards[1].title }}
+              </h3>
+              <p class="text-2xl text-zinc-500">
+                {{ productCards[1].description }}
+              </p>
+            </div>
+          </article>
+
+          <!-- Product Card 3 -->
+          <article class="flex-1">
+            <img
+              :src="productCards[2].imageUrl"
+              :alt="productCards[2].imageAlt"
+              class="object-cover w-full rounded-3xl h-[465px]"
+            />
+            <div class="mt-7">
+              <h3 class="mb-7 text-2xl text-black">
+                {{ productCards[2].title }}
+              </h3>
+              <p class="text-2xl text-zinc-500">
+                {{ productCards[2].description }}
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Company Info Section -->
+      <section class="flex flex-col px-8 py-20 max-sm:px-5 max-sm:py-20">
+        <div class="flex gap-12 max-md:flex-col">
+          <div class="flex-1 max-w-[516px] max-md:max-w-full">
+            <h2 class="mb-2 text-3xl text-black">The Synthesizer Difference</h2>
+            <p class="mb-12 text-3xl text-zinc-500">
+              At Synthesizer, we're redefining everyday essentials with
+              cutting-edge fiber technology. Explore a world where innovation
+              meets comfort and style across apparel, home, and beyond.
+            </p>
+            <h2 class="mb-2 text-3xl text-black">
+              Synthesizer: Your World of Fiber
+            </h2>
+            <p class="text-3xl text-zinc-500">
+              From the threads you wear to the textiles that surround you,
+              Synthesizer offers a comprehensive collection of fiber-based
+              products to enhance every aspect of your life.
+            </p>
+          </div>
+          <div class="flex-1 max-md:w-full">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/2b323d4c077da657e7df044b7552570a40c2a51d"
+              alt="Model wearing Synthesizer clothing"
+              class="object-cover h-[909px] rounded-[61px] w-[606px]"
+            />
+          </div>
+        </div>
+        <div class="flex gap-4 mt-10">
+          <button class="px-6 py-3 text-2xl text-white bg-black rounded-3xl">
+            Meet Synthesizer
+          </button>
+          <button
+            class="px-6 py-3 text-2xl text-black rounded-2xl bg-neutral-200"
+          >
+            Contact Us
+          </button>
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section class="px-8 py-20 max-sm:px-5 max-sm:py-20">
+        <h2 class="mb-10 text-6xl text-black">Synthesizing Smiles</h2>
+        <div class="flex gap-8 max-md:flex-col">
+          <!-- Testimonial Card 1 -->
+          <article
+            class="flex-1 p-8 bg-white rounded-xl border border-solid border-[color:var(--color-border)]"
+          >
+            <p class="mb-12 text-2xl text-black">
+              {{ testimonials[0].content }}
+            </p>
+            <div class="flex gap-4 items-center">
+              <div v-html="testimonials[0].avatarSvg"></div>
+            </div>
+          </article>
+
+          <!-- Testimonial Card 2 -->
+          <article
+            class="flex-1 p-8 bg-white rounded-xl border border-solid border-[color:var(--color-border)]"
+          >
+            <p class="mb-12 text-2xl text-black">
+              {{ testimonials[1].content }}
+            </p>
+            <div class="flex gap-4 items-center">
+              <div v-html="testimonials[1].avatarSvg"></div>
+            </div>
+          </article>
+
+          <!-- Testimonial Card 3 -->
+          <article
+            class="flex-1 p-8 bg-white rounded-xl border border-solid border-[color:var(--color-border)]"
+          >
+            <p class="mb-12 text-2xl text-black">
+              {{ testimonials[2].content }}
+            </p>
+            <div class="flex gap-4 items-center">
+              <div v-html="testimonials[2].avatarSvg"></div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer
+      class="px-20 py-14 bg-white border-t border-solid border-t-neutral-200 max-sm:px-5 max-sm:py-14"
+    >
+      <div class="flex justify-between">
+        <div class="text-2xl text-black">SYNTHESIZER.CO</div>
+        <nav class="flex gap-12">
+          <div>
+            <p class="text-base leading-6 text-black">Topic: Support</p>
+            <a href="#contact" class="text-base leading-6 text-black"
+              >Page: Contact Us</a
+            >
+            <a href="#shipping" class="text-base leading-6 text-black"
+              >Page: Shipping &amp; Returns</a
+            >
+            <a href="#faqs" class="text-base leading-6 text-black"
+              >Page: FAQs</a
+            >
+            <a href="#size-guide" class="text-base leading-6 text-black"
+              >Page: Size Guide</a
+            >
+          </div>
+        </nav>
+      </div>
+      <div class="flex gap-2 mt-10">
+        <a
+          href="#facebook"
+          class="flex justify-center items-center w-10 h-10 rounded"
+        >
+          <i class="ti ti-brand-facebook text-xl text-zinc-500"></i>
+        </a>
+        <a
+          href="#twitter"
+          class="flex justify-center items-center w-10 h-10 rounded"
+        >
+          <i class="ti ti-brand-twitter text-xl text-zinc-500"></i>
+        </a>
+        <a
+          href="#mail"
+          class="flex justify-center items-center w-10 h-10 rounded"
+        >
+          <i class="ti ti-mail text-xl text-zinc-500"></i>
+        </a>
+        <a
+          href="#instagram"
+          class="flex justify-center items-center w-10 h-10 rounded"
+        >
+          <i class="ti ti-brand-instagram text-xl text-zinc-500"></i>
+        </a>
+      </div>
+    </footer>
+  </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 
-export default defineComponent({
-  name: "HeroSection",
-});
+// TypeScript interfaces
+interface ProductCardProps {
+  imageUrl: string;
+  imageAlt: string;
+  title: string;
+  description: string;
+}
+
+interface TestimonialProps {
+  content: string;
+  avatarSvg: string;
+}
+
+// Product card data
+const productCards = ref<ProductCardProps[]>([
+  {
+    imageUrl:
+      "https://cdn.builder.io/api/v1/image/assets/TEMP/6a687934579d295670de1ab7e125ca4bd75942bc",
+    imageAlt: "Stylish Fiber Apparel",
+    title: "Discover Stylish Fiber Apparel:",
+    description:
+      "Explore our range of comfortable and fashionable clothing crafted from innovative fiber blends.",
+  },
+  {
+    imageUrl:
+      "https://cdn.builder.io/api/v1/image/assets/TEMP/1fb03cb8634efb71c70ed9ad12fa2c8135ef229f",
+    imageAlt: "Home Textiles",
+    title: "Enhance Your Home with Fiber Textiles:",
+    description:
+      "Discover our collection of rugs, curtains, and more, designed for comfort and style.",
+  },
+  {
+    imageUrl:
+      "https://cdn.builder.io/api/v1/image/assets/TEMP/3a7ffa8a446b4eb0c43b7ffacfc75247626c26ea",
+    imageAlt: "Fiber Footwear",
+    title: "Step into Comfort with Fiber Footwear:",
+    description:
+      "Browse our selection of durable and comfortable shoes made with advanced fiber technology.",
+  },
+]);
+
+// Testimonial data
+const testimonials = ref<TestimonialProps[]>([
+  {
+    content:
+      "The Synthesizer cotton kurta I bought is so incredibly soft and comfortable, perfect for the Bhubaneswar heat!",
+    avatarSvg: `<svg id="1:1915" layer-name="Avatar" width="373" height="50" viewBox="0 0 373 50" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="avatar" style="width: 45px; height: 45px">
+<circle cx="22.5" cy="25" r="22.5" fill="#D9D9D9"></circle>
+<circle cx="22.5" cy="25" r="22.5" fill="url(#pattern0_1_1915)"></circle>
+<text fill="black" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="61" y="17.8182">Anjali</tspan></text>
+<text fill="#828282" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="61" y="43.8182">Local Customer, Purchased Cotton Kurta</tspan></text>
+<defs>
+<pattern id="pattern0_1_1915" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0_1_1915" transform="translate(0 -0.12585) scale(0.00136054)"></use>
+</pattern>
+</defs>
+</svg>`,
+  },
+  {
+    content:
+      "I ordered a selection of Synthesizer's home textiles online, and I was so impressed with the quality and the beautiful craftsmanship. They've added a lovely touch to my home.",
+    avatarSvg: `<svg id="1:1922" layer-name="Avatar" width="120" height="45" viewBox="0 0 120 45" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="avatar" style="width: 45px; height: 45px">
+<circle cx="22.8334" cy="22.5" r="22.5" fill="#D9D9D9"></circle>
+<circle cx="22.8334" cy="22.5" r="22.5" fill="url(#pattern0_1_1922)"></circle>
+<text fill="black" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="61.3334" y="28.3182">Anya K.</tspan></text>
+<defs>
+<pattern id="pattern0_1_1922" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0_1_1922" transform="translate(0 -0.00468211) scale(0.000246427)"></use>
+</pattern>
+</defs>
+</svg>`,
+  },
+  {
+    content:
+      "I was looking for ethically sourced and beautifully designed fiber throws, and Synthesizer's collection exceeded my expectations. The texture and colors are just perfect for my living space.",
+    avatarSvg: `<svg id="1:1929" layer-name="Avatar" width="311" height="50" viewBox="0 0 311 50" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="avatar" style="width: 45px; height: 45px">
+<circle cx="23.1666" cy="25" r="22.5" fill="#D9D9D9"></circle>
+<circle cx="23.1666" cy="25" r="22.5" fill="url(#pattern0_1_1929)"></circle>
+<text fill="black" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="61.6666" y="17.8182">Isabelle Dubois</tspan></text>
+<text fill="#828282" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="16" font-weight="500" letter-spacing="0em"><tspan x="61.6666" y="43.8182">New Parent, Stockholm, Sweden</tspan></text>
+<defs>
+<pattern id="pattern0_1_1929" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0_1_1929" transform="translate(0 -0.250183) scale(0.0003663)"></use>
+</pattern>
+</defs>
+</svg>`,
+  },
+]);
 </script>
-  
-   
+
